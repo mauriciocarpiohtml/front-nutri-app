@@ -10,8 +10,8 @@ import Registrarse from './pages/Registrarse'
 import Login from './pages/Login'
 
 const router = createBrowserRouter([
-  {path:'/', element:<Registrarse/>},
-  {path:'/login', element:<Login/>},
+  {path:'/', element:<Login/>},
+  {path:'/registrarse', element:<Registrarse/>},
   {path:'/pacientes/:id', element:<Pacientes/>},
   {path:'/paciente/:id', element:<PaginaPaciente/>}
   
