@@ -56,12 +56,12 @@ function Registrarse() {
 
   return (
     <>
-     <h1 className='text-indigo-600 uppercase font-semibold text-3xl text-center mt-10'>Crea tu cuenta</h1>
-    <div className='p-5 w-[80%] md:w-[55%] flex justify-center items-center mx-auto flex-col '>
+     <h1 className='text-indigo-600 uppercase px-5 font-semibold text-xl md:text-3xl text-center mt-10'>Crea tu cuenta</h1>
+    <div className='p-5 w-[85%] md:w-[55%] flex justify-center items-center mx-auto flex-col '>
 
       <form 
       onSubmit={handleSubmit}
-      className='my-3 md:my-3 bg-white shadow-lg p-10 rounded-lg w-full '>
+      className='my-3 md:my-3 bg-white shadow-lg p-3 md:p-10 rounded-lg w-full '>
 
          {/* // mostrar alerta  */}
 
@@ -128,7 +128,7 @@ function Registrarse() {
       <nav className='md:flex md:justify-between mb-5'>
         <Link
         className='block text-center my-5 md:my-5 text-stone-700 uppercase hover:text-indigo-500 transition-colors' 
-        to='/login'>Iniciar sesión</Link>
+        to='/'>Iniciar sesión</Link>
       </nav>
     </div>  
     </>

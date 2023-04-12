@@ -54,13 +54,13 @@ import Alerta from '../components/Alerta'
   return (
     <>
     <h1 
-    className='text-indigo-600 font-semibold uppercase mt-10 text-2xl text-center'>Inicia sesion y administra tus pacientes</h1>
+    className='text-indigo-600 font-semibold uppercase px-5 mt-10 text-xl md:text-3xl text-center'>Inicia sesion y administra tus pacientes</h1>
 
-    <div className='p-5 w-[80%] md:w-[55%] flex justify-center items-center mx-auto flex-col '>
+    <div className='p-5 w-[85%] md:w-[55%] flex justify-center items-center mx-auto flex-col '>
         {msg && <Alerta alerta={alerta}/>}
       <form
        onSubmit={handleLogin}
-       className='my-3 md:my-5 bg-white shadow-lg p-10 rounded-lg w-full'>
+       className='my-3 md:my-5 bg-white shadow-lg p-3 md:p-10 rounded-lg w-full'>
         <div 
          className='my-3'>
           <label
@@ -98,7 +98,7 @@ import Alerta from '../components/Alerta'
       <nav className='md:flex md:justify-between mb-5'>
         <Link
         className='block text-center my-5 md:my-5 text-stone-700 uppercase hover:text-indigo-500 transition-colors' 
-        to='/'>Registrate</Link>
+        to='/registrarse'>Registrate</Link>
       </nav>
     </div>
     </>
