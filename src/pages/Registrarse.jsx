@@ -44,7 +44,7 @@ function Registrarse() {
       setAlerta({})
       
       // Enviar el usuario al login
-      navigate('/login');
+      navigate('/');
 
     } catch (error) {
       console.log(error)
