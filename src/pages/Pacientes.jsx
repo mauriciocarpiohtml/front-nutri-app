@@ -22,7 +22,7 @@ function Pacientes() {
         headers.append("Authorization", `Bearer ${autenticado}`)
 
         try {
-          const respuesta = await fetch('http://localhost:3010/api/usuarios/perfil', { headers: headers });
+          const respuesta = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/usuarios/perfil`, { headers: headers });
           const resultado = await respuesta.json()
           setNutricionista(resultado)
           
