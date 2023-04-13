@@ -59,7 +59,7 @@ function ControlCard({resultado}) {
 
             <div className='mt-3 flex justify-start items-center gap-3'>
               <CycloneIcon className='text-indigo-600'/>
-              <p className='font-bold text-stone-600'> Glúteos <span className='font-medium text-stone-500'>{resultado.cuadriceps} cm</span></p>
+              <p className='font-bold text-stone-600'> Glúteos <span className='font-medium text-stone-500'>{resultado.gluteos} cm</span></p>
             </div>
 
             <div className='mt-5 flex justify-between items-center'>

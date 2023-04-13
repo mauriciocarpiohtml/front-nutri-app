@@ -10,21 +10,23 @@ function ListaControl() {
     const { id } = useParams()
     const {controles, setControles, autenticado} = useContext(OrneContext)
 
-    useEffect(()=>{
-      async function buscarControles(){
-        const headers = new Headers()
-        headers.append("Authorization", `Bearer ${autenticado}`)
-  
-        try {
-          const respuesta = await fetch(`http://localhost:3010/api/controles/${id}`, { headers: headers });
-          const resultado = await respuesta.json()
-          setControles(resultado)
-        } catch (error) {
-          console.log(error)
+    useEffect(() => {
+      async function buscarControles() {
+        if (autenticado) {
+          const headers = new Headers();
+          headers.append("Authorization", `Bearer ${autenticado}`)
+      
+          try {
+            const respuesta = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/controles/${id}`, { headers: headers })
+            const resultado = await respuesta.json()
+            setControles(resultado)
+          } catch (error) {
+            console.log(error)
+          }
         }
       }
       buscarControles()
-    },[id])
+    }, [id, autenticado])
 
   
   return (

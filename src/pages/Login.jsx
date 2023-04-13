@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import OrneContext from '../Context/MyContext'
 import Alerta from '../components/Alerta'
@@ -8,11 +8,12 @@ import Alerta from '../components/Alerta'
 
  function Login() {
 
-    const {setAutenticado} = useContext(OrneContext)
+    const {autenticado, setAutenticado} = useContext(OrneContext)
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [alerta, setAlerta] = useState({})
+    const [dataUser, setDataUser] = useState({})
 
     //navegacion
     const navigate = useNavigate()
@@ -28,11 +29,10 @@ import Alerta from '../components/Alerta'
         }
         try {
         const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/usuarios/login`, {email, password})
-        // const data = await response.json()
+        setDataUser(response.data._id)
         if(response.status === 200 && response.data){
 
            await setAutenticado(response.data.token)
-           navigate(`/pacientes/${response.data._id}`)
         }
         if(response.status === 403){
             setAlerta({
@@ -50,6 +50,11 @@ import Alerta from '../components/Alerta'
 
     const {msg} = alerta
     
+    useEffect(() =>{
+      if(autenticado){
+        navigate(`/pacientes/${dataUser}`)
+      }
+    }, [autenticado])
     
   return (
     <>
@@ -98,7 +103,7 @@ import Alerta from '../components/Alerta'
       <nav className='md:flex md:justify-between mb-5'>
         <Link
         className='block text-center my-5 md:my-5 text-stone-700 uppercase hover:text-indigo-500 transition-colors' 
-        to='/registrarse'>Registrate</Link>
+        to='/registrarse'>Registrase</Link>
       </nav>
     </div>
     </>

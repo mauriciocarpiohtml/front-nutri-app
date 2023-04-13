@@ -10,25 +10,31 @@ import { useParams } from 'react-router-dom'
 
 
 function PaginaPaciente() {
-  const [pacienteData, setPacienteData] = useState([])
-
+  
   const { id } = useParams()
   const { controles, formularioControl, autenticado} = useContext(OrneContext)
   
-  useEffect(()=>{
-    async function datosPaciente(){
-      const headers = new Headers()
-      headers.append("Authorization", `Bearer ${autenticado}`)
+  const [loading, setLoading] = useState(true);
+  const [pacienteData, setPacienteData] = useState([])
+
+  useEffect(() => {
+    async function datosPaciente() {
+      const headers = new Headers();
+      headers.append('Authorization', `Bearer ${autenticado}`);
       try {
         const respuesta = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/pacientes/${id}`, { headers: headers });
-        const resultado = await respuesta.json()
+        const resultado = await respuesta.json();
         setPacienteData(resultado)
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
-    datosPaciente()
-  },[id])
+
+    if (autenticado && loading) {
+      setLoading(false)
+      datosPaciente()
+    }
+  }, [id, autenticado, loading])
 
   return (
     <>

@@ -37,6 +37,7 @@ function Formulario() {
           })
       })
       const resultado = await respuesta.json()
+      console.log(resultado)
       setPacientes([...pacientes, resultado])
       
       //Resetear formulario

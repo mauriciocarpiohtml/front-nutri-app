@@ -6,7 +6,7 @@ function FormularioControl() {
 
   const { id } = useParams()
 
-    const { setFormularioControl, editarControl , limpiarFormControl, fecha, setFecha, pesoActual, 
+    const { setFormularioControl, editarControl , setEditarControl, limpiarFormControl, fecha, setFecha, pesoActual, 
             setPesoActual, biceps, setBiceps, cintura, 
            setCintura, cuadriceps, setCuadriceps, gluteos, setGluteos, autenticado, idControl, 
            controles, setControles,  } = useContext(OrneContext)
@@ -53,7 +53,6 @@ function FormularioControl() {
               }
               return
           }  
-
           const url = `${import.meta.env.VITE_BACKEND_URL}/api/controles/${idControl}`
           const datos = { fecha, pesoActual, biceps, cintura, cuadriceps, gluteos}
           const options = {
@@ -65,20 +64,25 @@ function FormularioControl() {
             body: JSON.stringify(datos)
           }
           
-          const respuesta = await fetch(url, options)
-          const resultado = await respuesta.json()
-      
-          // Actualizar los controles en el state
-          setControles(controles.map(control => {
-            if (control._id === idControl) {
-              return resultado
-            } else {
-              return control
-            }
-          }))
-
-          // Reset form
-          limpiarFormControl()
+          try {
+            const respuesta = await fetch(url, options)
+            const resultado = await respuesta.json()
+          
+            // Actualizar los controles en el state
+            setControles(controles.map(control => {
+              if (control._id === idControl) {
+                return resultado
+              } else {
+                return control
+              }
+            }))
+          } catch (error) {
+            console.log(error)
+          } finally {
+            // Reset form
+            setEditarControl(false)
+            limpiarFormControl()
+          }
              
     }
 
