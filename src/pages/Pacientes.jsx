@@ -70,7 +70,7 @@ let pacientesFiltrados = pacientes
         </div>
         <div className='md:w-[80%] ml-auto mr-auto'>
           <div className='mt-8 md:mt-5 p-5'>
-            <h3 className='text-indigo-600 font-bold text-3xl text-center uppercase'>{`Pacientes ${nutricionista.nombre}`}</h3>
+            <h3 className='text-indigo-600 font-bold text-3xl text-center uppercase'>{`Pacientes ${nutricionista?.nombre}`}</h3>
           </div>
           <Buscador />
           {mostrarFormulario && <Formulario />}
