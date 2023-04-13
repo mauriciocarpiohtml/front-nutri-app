@@ -54,7 +54,7 @@ function FormularioControl() {
               return
           }  
 
-          const url = `${import.meta.env.VITE_BACKEND_URL}/api/controles//${idControl}`
+          const url = `${import.meta.env.VITE_BACKEND_URL}/api/controles/${idControl}`
           const datos = { fecha, pesoActual, biceps, cintura, cuadriceps, gluteos}
           const options = {
             method: 'PUT',
@@ -79,8 +79,7 @@ function FormularioControl() {
 
           // Reset form
           limpiarFormControl()
-            
-            
+             
     }
 
   return (
