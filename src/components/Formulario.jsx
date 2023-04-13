@@ -23,10 +23,10 @@ function Formulario() {
     headers.append("Authorization", `Bearer ${autenticado}`)
     headers.append("Content-Type", "application/json")
 
-    // Esto despues hacer refactor jajajaj
+    
     if(!editarPaciente){
       try {
-        const respuesta = await fetch('http://localhost:3010/api/pacientes', {
+        const respuesta = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/pacientes`, {
           method: 'POST',
           headers: headers,
           body: JSON.stringify({
@@ -48,7 +48,7 @@ function Formulario() {
         return
     }
 
-    const url = `http://localhost:3010/api/pacientes/${obtenerId}`
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/pacientes/${obtenerId}`
     const datos = { nombre, apellido, email, telefono }
     const options = {
       method: 'PUT',
